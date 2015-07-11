@@ -1,0 +1,55 @@
+package hitungapp;
+
+import android.media.MediaPlayer;  
+import android.os.Bundle;  
+import android.app.Activity;  
+import android.view.View ;  
+import android.widget.*;  
+
+public class MainActivity extends Activity {  
+MediaPlayer player ;  
+TextView text ;  
+   int j = 0;  
+      @Override  
+      protected void onCreate(Bundle savedInstanceState) {  
+          super.onCreate(savedInstanceState);  
+        setContentView(R.layout.activity_main);  
+      text =(TextView) findViewById(R.id.text1);  
+     }  
+      public void text1(View v){  
+           j++ ;  
+           text.setText(j+"");  
+          playSound(j);       
+       if (j==10){j=0;}  
+       }  
+       @Override  
+       public void onPause() {  
+         try{  
+         super.onPause();  
+         player.pause();  
+        }  
+       catch (Exception e){}  
+        }  
+       private void playSound(int arg){  
+           try{  
+              if (player.isPlaying()) {  
+                   player.stop();  
+                player.release();  
+             }  
+            }   
+           catch(Exception e){ }  
+         if (arg == 1){player = MediaPlayer.create(this, R.raw.satu);}  
+            else if (arg==2){player = MediaPlayer.create(this, R.raw.dua);}  
+            else if (arg==3){player = MediaPlayer.create(this, R.raw.tiga);}  
+            else if (arg==4){player = MediaPlayer.create(this, R.raw.empat);}  
+            else if (arg==5){player = MediaPlayer.create(this, R.raw.lima);}  
+            else if (arg==6){player = MediaPlayer.create(this, R.raw.enam);}  
+            else if (arg==7){player = MediaPlayer.create(this, R.raw.tujuh);}  
+            else if (arg==8){player = MediaPlayer.create(this, R.raw.delapan);}  
+            else if (arg==9){player = MediaPlayer.create(this, R.raw.sembilan);}  
+            else if (arg==10){player = MediaPlayer.create(this, R.raw.sepuluh);}  
+             player.setLooping(false); // Set looping  
+             player.start();  
+    }   
+  } 
+
